@@ -1,0 +1,20 @@
+version: '3'
+services:
+  php-app:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html
+    depends_on:
+      - mysql-db
+
+  mysql-db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: phpdatabase
+      MYSQL_USER: yo
+      MYSQL_PASSWORD: miPassword
+    ports:
+      - "3308:3306"
